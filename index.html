@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Living Real Estate</title>
+    <style>
+        /* Internal CSS Styles - Unified Theme */
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23f0f0f0" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            background-color: #f8f9fa;
+            line-height: 1.6;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Layout structure with centered content */
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            flex: 1;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-style: normal;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin: 10px 0 0 0;
+            font-style: italic;
+            font-weight: normal;
+        }
+
+        /* Navigation Styles - Consistent Navigation */
+        nav {
+            background-color: #34495e;
+            padding: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            border-radius: 5px 5px 0 0;
+            font-style: normal;
+        }
+
+        nav ul li a:hover {
+            background-color: #2c3e50;
+            text-decoration: underline;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 40px;
+            text-align: center;
+        }
+
+        /* Heading Styles with proper font styling */
+        h1 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        h2 {
+            color: #34495e;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #8e44ad;
+            padding-bottom: 10px;
+            font-weight: bold;
+            font-style: normal;
+            display: inline-block;
+        }
+
+        /* Paragraph Styles with text indentation */
+        p {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.1em;
+            color: #555;
+            font-style: normal;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* List Styles */
+        ul.features {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        ul.features li {
+            background: linear-gradient(90deg, #f8e8f0, #f1d7e8);
+            margin: 10px 0;
+            padding: 15px;
+            border-left: 5px solid #8e44ad;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1em;
+            font-style: normal;
+            text-align: left;
+        }
+
+        ul.features li:before {
+            content: "🏠 ";
+            margin-right: 10px;
+        }
+
+        /* Image Gallery Styles */
+        .image-gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px auto;
+            max-width: 1000px;
+        }
+
+        .image-item {
+            text-align: center;
+            margin: 15px;
+            flex: 0 0 calc(25% - 30px);
+            min-width: 200px;
+        }
+
+        .image-item img {
+            width: 100%;
+            max-width: 250px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .image-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .image-item p {
+            text-indent: 0;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* Company Highlight Section */
+        .company-highlight {
+            background: linear-gradient(135deg, #f8e8f0, #f1d7e8);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px auto;
+            border-left: 5px solid #8e44ad;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 800px;
+        }
+
+        .stats-section {
+            background: rgba(142, 68, 173, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px auto;
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .stats-section h3 {
+            color: #8e44ad;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        .stat-number {
+            color: #e74c3c;
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+            margin: 10px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            text-indent: 0;
+            margin: 5px 0;
+            font-style: italic;
+        }
+
+        /* Special Text Styles with various font styling */
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+            font-style: italic;
+            text-decoration: underline;
+        }
+
+        .company-name {
+            color: #8e44ad;
+            font-weight: bold;
+            font-size: 1.1em;
+            font-style: normal;
+        }
+
+        .award-text {
+            color: #d4af37;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .stat-text {
+            color: #2c3e50;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .location-text {
+            color: #34495e;
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        .emphasis {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .italic-text {
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <h1>REAL LIVING</h1>
+            <p>Your Trusted Real Estate Partner</p>
+        </header>
+
+        <!-- Navigation Section - Consistent across all pages -->
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="page2.html">Floor Plans</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Section -->
+        <section>
+            <h1>Real Estate Excellence</h1>
+            
+            <div class="company-highlight">
+                <h2>About Us</h2>
+                <p><span class="company-name">Real Living Real Estate</span> is a full-service real estate brokerage franchise company with a comprehensive and integrated suite of resources for franchisees and their sales professionals, as well as for consumers who work with them. In 2016 and 2017, <span class="company-name">Real Living Real Estate</span> was named <span class="highlight">"Real Estate Agency Brand of the Year"</span> in the ongoing Harris Poll EquiTrend study; and was named <span class="highlight">"Most Loved"</span> and <span class="highlight">"Most Trusted"</span> real estate brand in the study in consecutive years.</p>
+            </div>
+
+            <p>Additionally, the <span class="company-name">Real Living Brand</span> and its innovative concepts were recognized by <span class="italic-text">Entrepreneur magazine</span> as well as <span class="italic-text">Inman News</span>, receiving several <span class="award-text">Inman Innovator Awards</span>. <span class="company-name">Real Living</span> was also named <span class="highlight">"the Most Promising New National Brand"</span> by the <span class="italic-text">Swanepoel TRENDS Report</span>.</p>
+
+            <p><span class="company-name">Real Living Real Estate</span> is a network brand of <span class="emphasis">HSF Affiliates LLC</span>, which is owned by <span class="emphasis">HomeServices of America, Inc.</span>, a <span class="italic-text">Berkshire Hathaway affiliate</span>. <span class="company-name">Real Living</span> leads the real estate industry with a customer satisfaction rating of <span class="stat-text">98 percent</span>, based upon research conducted by a third party, independent research firm.</p>
+
+            <div class="stats-section">
+                <h3>Industry Leadership</h3>
+                <span class="stat-number">98%</span>
+                <p style="text-indent: 0; margin: 0; color: #666;">Customer Satisfaction Rating</p>
+            </div>
+
+            <p>Based in <span class="location-text">Minneapolis, Minn.</span>, <span class="company-name">HomeServices of America, Inc.</span> is the <span class="emphasis">second-largest, full-service residential real estate brokerage firm</span> and the <span class="emphasis">largest brokerage-owned settlement services provider</span> in the U.S. and is the majority owner in the <span class="italic-text">Prudential Real Estate</span> and <span class="company-name">Real Living Real Estate</span> franchise networks.</p>
+
+            <p>Owned by <span class="emphasis">MidAmerican Energy Holdings Company</span>, a consolidated subsidiary of <span class="italic-text">Berkshire Hathaway Inc.</span>, <span class="company-name">HomeServices'</span> operating companies offer integrated real estate services, including <span class="emphasis">brokerage services</span>, <span class="emphasis">mortgage originations</span>, <span class="emphasis">title and closing services</span>, <span class="emphasis">property and casualty insurance</span>, <span class="emphasis">home warranties</span> and other homeownership services.</p>
+
+            <h2>Our Comprehensive Services</h2>
+            <ul class="features">
+                <li>Full-Service Residential Property Sales</li>
+                <li>Commercial Real Estate Solutions</li>
+                <li>Professional Property Management</li>
+                <li>Investment Property Consulting</li>
+                <li>Mortgage and Financing Services</li>
+                <li>Professional Property Valuation</li>
+                <li>Title and Closing Services</li>
+                <li>Property Insurance Solutions</li>
+            </ul>
+
+            <h2>Featured Property Portfolio</h2>
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'><rect width='300' height='200' fill='%23e8f4f8'/><polygon points='50,150 150,50 250,150' fill='%234a90a4'/><rect x='130' y='120' width='40' height='30' fill='%238b4513'/><rect x='180' y='100' width='20' height='20' fill='%23fff'/><rect x='100' y='100' width='20' height='20' fill='%23fff'/></svg>" alt="Modern Family Home">
+                    <p>Luxury Family Home</p>
+                </div>
+                <div class="image-item">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'><rect width='300' height='200' fill='%23f0f8ff'/><rect x='50' y='80' width='200' height='100' fill='%23708090'/><rect x='60' y='90' width='30' height='20' fill='%23fff'/><rect x='210' y='90' width='30' height='20' fill='%23fff'/><rect x='125' y='140' width='50' height='40' fill='%238b4513'/></svg>" alt="Downtown Condo">
+                    <p>Downtown Condominium</p>
+                </div>
+                <div class="image-item">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'><rect width='300' height='200' fill='%23f5f5dc'/><rect x='40' y='100' width='220' height='80' fill='%23d2691e'/><polygon points='40,100 150,40 260,100' fill='%234b0082'/><rect x='130' y='140' width='40' height='40' fill='%23654321'/><rect x='80' y='120' width='25' height='25' fill='%2387ceeb'/><rect x='195' y='120' width='25' height='25' fill='%2387ceeb'/></svg>" alt="Suburban Villa">
+                    <p>Suburban Villa</p>
+                </div>
+                <div class="image-item">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'><rect width='300' height='200' fill='%23f8f8ff'/><rect x='30' y='120' width='240' height='60' fill='%23696969'/><rect x='40' y='130' width='20' height='15' fill='%23add8e6'/><rect x='80' y='130' width='20' height='15' fill='%23add8e6'/><rect x='200' y='130' width='20' height='15' fill='%23add8e6'/><rect x='240' y='130' width='20' height='15' fill='%23add8e6'/><rect x='130' y='150' width='40' height='30' fill='%23654321'/></svg>" alt="Office Building">
+                    <p>Commercial Office Space</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer>
+            <p>&copy; 2025 Real Living Real Estate. All Rights Reserved.</p>
+            <p><em>Your Dreams, Our Expertise, Perfect Match!</em></p>
+        </footer>
+    </div>
+</body>
+</html>

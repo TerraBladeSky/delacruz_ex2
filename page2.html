@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floor Plans - Real Living Real Estate</title>
+    <style>
+        /* Internal CSS Styles - Unified Theme */
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23f0f0f0" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            background-color: #f8f9fa;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Layout structure */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin: 10px 0 0 0;
+            font-style: italic;
+        }
+
+        /* Navigation Styles */
+        nav {
+            background-color: #34495e;
+            padding: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            border-radius: 5px 5px 0 0;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #2c3e50;
+            text-decoration: underline;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 40px;
+            text-align: center;
+        }
+
+        /* Heading Styles */
+        h1 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        h2 {
+            color: #34495e;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        /* Paragraph Styles */
+        p {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.1em;
+            color: #555;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Floor Plan Container */
+        .floorplan-container {
+            margin: 30px auto;
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 800px;
+        }
+
+        .floorplan-image {
+            max-width: 100%;
+            height: auto;
+            border: 3px solid #34495e;
+            border-radius: 8px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Instructions */
+        .instructions {
+            background: linear-gradient(135deg, #ecf0f1, #bdc3c7);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            border-left: 5px solid #3498db;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .instructions p {
+            text-indent: 0;
+            color: #2c3e50;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        .instructions ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .instructions li {
+            background: rgba(52, 152, 219, 0.1);
+            margin: 8px 0;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #2c3e50;
+            text-align: left;
+        }
+
+        .instructions li:before {
+            content: "👆 ";
+            margin-right: 8px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            text-indent: 0;
+            margin: 5px 0;
+            font-style: italic;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <h1>REAL LIVING</h1>
+            <p>Your Trusted Real Estate Partner</p>
+        </header>
+
+        <!-- Navigation Section -->
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="page2.html" class="active">Floor Plans</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Section -->
+        <section>
+            <h1>Interactive Floor Plan</h1>
+            
+            <h2>Explore Our Property Layout</h2>
+            <p>Welcome to our interactive floor plan feature. This comprehensive layout showcases a modern family home with carefully designed spaces that cater to contemporary living needs. The floor plan includes spacious living areas, a functional kitchen, comfortable bedrooms, and well-appointed bathrooms, all designed with both comfort and functionality in mind.</p>
+
+            <div class="instructions">
+                <p>Click on different rooms to explore detailed information:</p>
+                <ul>
+                    <li>Dining Room - Perfect for family gatherings</li>
+                    <li>Living Room - Spacious entertainment area</li>
+                    <li>Master Bedroom - Luxurious private retreat</li>
+                    <li>Kitchen - Modern cooking space</li>
+                    <li>Bedroom 2 - Comfortable guest room</li>
+                    <li>Library - Quiet reading space</li>
+                </ul>
+            </div>
+
+            <div class="floorplan-container">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600' style='background: %23f8f9fa;'><defs><pattern id='tile' width='20' height='20' patternUnits='userSpaceOnUse'><rect width='20' height='20' fill='%23fff'/><rect width='19' height='19' fill='%23f0f0f0' stroke='%23ddd' stroke-width='0.5'/></pattern></defs><rect width='800' height='600' fill='url(%23tile)'/><rect x='50' y='50' width='250' height='200' fill='%23e8f4f8' stroke='%23333' stroke-width='2'/><text x='175' y='160' text-anchor='middle' font-family='Arial' font-size='18' font-weight='bold'>Dining Room</text><rect x='350' y='50' width='250' height='200' fill='%23f0f8e8' stroke='%23333' stroke-width='2'/><text x='475' y='160' text-anchor='middle' font-family='Arial' font-size='18' font-weight='bold'>Living Room</text><rect x='50' y='300' width='150' height='120' fill='%23fff8e0' stroke='%23333' stroke-width='2'/><text x='125' y='365' text-anchor='middle' font-family='Arial' font-size='14' font-weight='bold'>Kitchen</text><rect x='220' y='300' width='120' height='120' fill='%23ffe0e0' stroke='%23333' stroke-width='2'/><text x='280' y='365' text-anchor='middle' font-family='Arial' font-size='14' font-weight='bold'>Bedroom 2</text><rect x='350' y='300' width='120' height='120' fill='%23e0f0e0' stroke='%23333' stroke-width='2'/><text x='410' y='365' text-anchor='middle' font-family='Arial' font-size='14' font-weight='bold'>Bath 2</text><rect x='50' y='450' width='120' height='100' fill='%23e8e8e8' stroke='%23333' stroke-width='2'/><text x='110' y='485' text-anchor='middle' font-family='Arial' font-size='10'>Entry</text><text x='110' y='500' text-anchor='middle' font-family='Arial' font-size='10'>Laundry</text><rect x='200' y='450' width='120' height='100' fill='%23f0f0f0' stroke='%23333' stroke-width='2'/><text x='260' y='495' text-anchor='middle' font-family='Arial' font-size='14' font-weight='bold'>Library</text><rect x='450' y='300' width='280' height='200' fill='%23f8e8f0' stroke='%23333' stroke-width='2'/><text x='590' y='410' text-anchor='middle' font-family='Arial' font-size='18' font-weight='bold'>Master Bedroom</text><rect x='650' y='320' width='60' height='80' fill='%23e0e0e0' stroke='%23333' stroke-width='1'/><text x='680' y='365' text-anchor='middle' font-family='Arial' font-size='10'>Master Bath</text><rect x='450' y='520' width='150' height='60' fill='%23d0d0d0' stroke='%23333' stroke-width='2'/><text x='525' y='555' text-anchor='middle' font-family='Arial' font-size='12'>2-Car Garage</text><circle cx='175' cy='30' r='8' fill='%23ff6b6b'/><text x='175' y='20' text-anchor='middle' font-family='Arial' font-size='10' fill='%23333'>Click Here</text><circle cx='475' cy='30' r='8' fill='%23ff6b6b'/><text x='475' y='20' text-anchor='middle' font-family='Arial' font-size='10' fill='%23333'>Click Here</text><circle cx='590' cy='280' r='8' fill='%23ff6b6b'/><text x='590' y='270' text-anchor='middle' font-family='Arial' font-size='10' fill='%23333'>Click Here</text></svg>" 
+                     alt="Interactive Floor Plan" 
+                     usemap="#floorplan" 
+                     class="floorplan-image">
+                
+                <map name="floorplan">
+                    <!-- Dining Room Area -->
+                    <area shape="rect" 
+                          coords="50,50,300,250" 
+                          href="dining.html" 
+                          alt="Dining Room"
+                          title="Explore the Dining Room">
+                    
+                    <!-- Living Room Area -->
+                    <area shape="rect" 
+                          coords="350,50,600,250" 
+                          href="living.html" 
+                          alt="Living Room"
+                          title="Explore the Living Room">
+                    
+                    <!-- Master Bedroom Area -->
+                    <area shape="rect" 
+                          coords="450,300,730,500" 
+                          href="master.html" 
+                          alt="Master Bedroom"
+                          title="Explore the Master Bedroom">
+
+                    <!-- Kitchen Area -->
+                    <area shape="rect" 
+                          coords="50,300,200,420" 
+                          href="kitchen.html" 
+                          alt="Kitchen"
+                          title="Explore the Kitchen">
+                    
+                    <!-- Bedroom 2 Area -->
+                    <area shape="rect" 
+                          coords="220,300,340,420" 
+                          href="bedroom2.html" 
+                          alt="Bedroom 2"
+                          title="Explore Bedroom 2">
+                    
+                    <!-- Bath 2 Area -->
+                    <area shape="rect" 
+                          coords="350,300,470,420" 
+                          href="bath2.html" 
+                          alt="Bath 2"
+                          title="Explore Bathroom 2">
+                    
+                    <!-- Entry/Laundry Area -->
+                    <area shape="rect" 
+                          coords="50,450,170,550" 
+                          href="entry.html" 
+                          alt="Entry & Laundry"
+                          title="Explore Entry & Laundry">
+                    
+                    <!-- Library Area -->
+                    <area shape="rect" 
+                          coords="200,450,320,550" 
+                          href="library.html" 
+                          alt="Library"
+                          title="Explore the Library">
+                    
+                    <!-- Garage Area -->
+                    <area shape="rect" 
+                          coords="450,520,600,580" 
+                          href="garage.html" 
+                          alt="2-Car Garage"
+                          title="Explore the Garage">
+                </map>
+            </div>
+
+            <p>This thoughtfully designed floor plan maximizes both functionality and comfort, featuring an open-concept layout that promotes natural flow between living spaces. The strategic placement of windows ensures optimal natural light throughout the day, while the efficient use of space creates an inviting atmosphere for both daily living and entertaining guests.</p>
+
+            <p>Each room has been carefully proportioned to serve its intended purpose while maintaining visual harmony with the overall design. The master bedroom suite offers privacy and luxury, while the common areas encourage family interaction and social gatherings. Modern amenities and storage solutions are seamlessly integrated throughout the home.</p>
+        </section>
+
+        <!-- Footer Section -->
+        <footer>
+            <p>&copy; 2025 Real Living Real Estate. All Rights Reserved.</p>
+            <p><em>Your Dreams, Our Expertise, Perfect Match!</em></p>
+        </footer>
+    </div>
+</body>
+</html>
