@@ -1,194 +1,904 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Entry and Laundry - Real Living Real Estate</title>
-  <style>
-    body {
-      font-family: 'Georgia', 'Times New Roman', serif;
-      margin: 0;
-      padding: 0;
-      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23f0f0f0" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-      background-color: #f8f9fa;
-      color: #333;
-      line-height: 1.6;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      background-color: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    }
-    header {
-      background: linear-gradient(135deg, #2c3e50, #34495e);
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      background-color: #34495e;
-    }
-    nav ul li {
-      margin: 0 15px;
-    }
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      padding: 15px 20px;
-      display: block;
-      font-weight: bold;
-    }
-    nav ul li a:hover {
-      background-color: #2c3e50;
-      text-decoration: underline;
-    }
-    section {
-      padding: 40px;
-      text-align: center;
-    }
-    h1 {
-      color: #2c3e50;
-      font-size: 2.2em;
-      margin-bottom: 30px;
-    }
-    h2 {
-      color: #34495e;
-      font-size: 1.8em;
-      border-bottom: 3px solid #8e44ad;
-      display: inline-block;
-      padding-bottom: 10px;
-      margin-top: 40px;
-    }
-    p {
-      text-align: justify;
-      text-indent: 2em;
-      font-size: 1.1em;
-      color: #555;
-      margin: 0 auto 20px;
-      max-width: 800px;
-    }
-    .feature-icon {
-      font-size: 2em;
-      display: block;
-      margin-bottom: 10px;
-    }
-    .feature-card {
-      background: white;
-      padding: 20px;
-      border-top: 4px solid #8e44ad;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-    .back-button {
-      background: linear-gradient(135deg, #8e44ad, #9b59b6);
-      color: white;
-      padding: 12px 25px;
-      text-decoration: none;
-      border-radius: 25px;
-      display: inline-block;
-      margin: 20px 0;
-      font-weight: bold;
-    }
-    .back-button:hover {
-      background: linear-gradient(135deg, #9b59b6, #8e44ad);
-    }
-    footer {
-      background: linear-gradient(135deg, #2c3e50, #34495e);
-      color: white;
-      text-align: center;
-      padding: 25px;
-      margin-top: 40px;
-    }
-    footer p {
-      font-style: italic;
-      margin: 5px 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entry and Laundry - Real Living Real Estate</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 0 50px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) { width: 60px; height: 60px; left: 15%; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 100px; height: 100px; left: 70%; animation-delay: 3s; }
+        .particle:nth-child(3) { width: 40px; height: 40px; left: 45%; animation-delay: 6s; }
+        .particle:nth-child(4) { width: 80px; height: 80px; left: 85%; animation-delay: 2s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            33% { transform: translateY(-30px) rotate(120deg); opacity: 0.7; }
+            66% { transform: translateY(-15px) rotate(240deg); opacity: 0.5; }
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50, #4a69bd);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 4s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+            to { text-shadow: 2px 2px 20px rgba(255,255,255,0.5); }
+        }
+
+        header p {
+            margin-top: 10px;
+            font-style: italic;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            display: block;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav ul li a:hover {
+            background: linear-gradient(135deg, #8e44ad, #9b59b6);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            animation: slideInDown 1s ease-out;
+        }
+
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-description {
+            font-size: 1.4em;
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-divider {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 60px 40px;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            color: #2c3e50;
+            font-size: 3em;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, #8e44ad, #9b59b6);
+            border-radius: 2px;
+        }
+
+        .section-intro {
+            font-size: 1.3em;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .content-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin: 60px 0;
+            align-items: start;
+        }
+
+        .content-area {
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .content-area:hover {
+            transform: translateY(-10px);
+        }
+
+        .content-area::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(135deg, #8e44ad, #9b59b6);
+            border-radius: 20px 20px 0 0;
+        }
+
+        .area-icon {
+            font-size: 4em;
+            text-align: center;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-8px); }
+        }
+
+        .area-title {
+            font-size: 2.2em;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .area-description {
+            font-size: 1.2em;
+            color: #666;
+            text-align: justify;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #8e44ad, #9b59b6);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(142, 68, 173, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            display: block;
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .feature-card h3 {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .detailed-specs {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 60px 40px;
+            margin: 40px 0;
+            border-radius: 20px;
+        }
+
+        .specs-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .specs-header h3 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .specs-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 15px 30px;
+            background: white;
+            border: 2px solid #8e44ad;
+            border-radius: 25px;
+            color: #8e44ad;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active,
+        .tab-button:hover {
+            background: linear-gradient(135deg, #8e44ad, #9b59b6);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(142, 68, 173, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .spec-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #8e44ad;
+            transition: all 0.3s ease;
+        }
+
+        .spec-item:hover {
+            transform: translateX(5px);
+            background: #e9ecef;
+        }
+
+        .spec-item strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.2em;
+        }
+
+        .spec-item span {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .lifestyle-section {
+            background: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .lifestyle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .lifestyle-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lifestyle-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .lifestyle-card:hover::before {
+            animation: sweep 0.8s ease;
+        }
+
+        @keyframes sweep {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .lifestyle-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .lifestyle-card h4 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .lifestyle-card p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        .interactive-gallery {
+            margin: 60px 0;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .gallery-header h3 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            height: 200px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item span {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #8e44ad, #9b59b6);
+            color: white;
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 40px 0;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(142, 68, 173, 0.3);
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(142, 68, 173, 0.4);
+        }
+
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            text-align: center;
+            padding: 50px;
+            margin-top: 0;
+        }
+
+        footer p {
+            font-style: italic;
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+
+        .social-links {
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 2em;
+            margin: 0 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.3) rotate(10deg);
+        }
+
+        @media (max-width: 768px) {
+            .content-split {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.5em;
+            }
+            
+            .specs-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .lifestyle-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>REAL LIVING</h1>
-      <p>Your Trusted Real Estate Partner</p>
-    </header>
+    <div class="floating-elements">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
 
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="page2.html">Floor Plans</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="container">
+        <header>
+            <h1>REAL LIVING</h1>
+            <p>Your Trusted Real Estate Partner</p>
+        </header>
 
-    <section>
-      <h1>Entry and Laundry Areas</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="page2.html">Floor Plans</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
 
-      <!-- Entry Section -->
-      <h2>🏠 Entry</h2>
-      <p>The entryway is your home's first impression—a blend of style and function. Designed to welcome guests and provide practical organization, it features tasteful flooring, decorative accents, and space for storage or seating.</p>
-
-      <div class="features">
-        <div class="feature-card">
-          <span class="feature-icon">🚪</span>
-          <h3>Spacious Foyer</h3>
-          <p>Open layout with room for a console table, coat rack, or bench seating.</p>
+        <div class="hero-section">
+            <h1>Entry & Laundry</h1>
+            <p class="hero-description">Where functionality meets style - discover the thoughtfully designed spaces that make daily life effortless and welcoming. From your grand first impression to efficient household management, every detail has been crafted for modern living.</p>
         </div>
-        <div class="feature-card">
-          <span class="feature-icon">🖼️</span>
-          <h3>Stylish Design</h3>
-          <p>Elegant finishes and neutral tones set a warm, welcoming tone for the home.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-icon">🧥</span>
-          <h3>Storage Nook</h3>
-          <p>Closet space or built-in shelves to keep shoes, bags, and outerwear organized.</p>
-        </div>
-      </div>
 
-      <!-- Laundry Section -->
-      <h2>🧺 Laundry Room</h2>
-      <p>The laundry area is compact yet efficient, offering the perfect blend of utility and convenience. Strategically located near bedrooms and bathrooms, it supports easy household chores with thoughtful layout and modern appliances.</p>
+        <div class="section-divider">
+            <div class="section-header">
+                <h2>Functional Elegance</h2>
+                <p class="section-intro">These essential spaces demonstrate how utility and beauty can coexist perfectly. The entry sets the tone for your entire home experience, while the laundry area transforms a mundane chore into an organized, efficient process.</p>
+            </div>
 
-      <div class="features">
-        <div class="feature-card">
-          <span class="feature-icon">🧼</span>
-          <h3>Washer/Dryer Ready</h3>
-          <p>Hookups for side-by-side or stacked laundry units, with noise-reducing walls.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-icon">🧺</span>
-          <h3>Folding Counter</h3>
-          <p>Counter space for folding and organizing clothes conveniently in one area.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-icon">📦</span>
-          <h3>Overhead Storage</h3>
-          <p>Shelving or cabinets provide ample space for cleaning supplies and laundry essentials.</p>
-        </div>
-      </div>
+            <div class="content-split">
+                <div class="content-area">
+                    <div class="area-icon">🏠</div>
+                    <h3 class="area-title">Grand Entry</h3>
+                    <p class="area-description">Your home's first impression speaks volumes about the quality and thoughtfulness that awaits within. This welcoming space combines aesthetic appeal with practical functionality, creating a seamless transition from the outside world to your personal sanctuary.</p>
 
-      <a href="page2.html" class="back-button">← Back to Floor Plan</a>
-    </section>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <span class="feature-icon">🚪</span>
+                            <h3>Impressive Foyer</h3>
+                            <p>Spacious entryway with soaring ceilings, elegant lighting, and premium flooring that creates an immediate sense of luxury and sophistication.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">🪑</span>
+                            <h3>Built-in Seating</h3>
+                            <p>Custom bench seating with hidden storage compartments for shoes, bags, and seasonal items - both beautiful and practical.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">🧥</span>
+                            <h3>Organized Storage</h3>
+                            <p>Thoughtfully designed coat closet with adjustable shelving, hooks, and umbrella storage to keep everything tidy and accessible.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">💡</span>
+                            <h3>Ambient Lighting</h3>
+                            <p>Layered lighting design with statement fixtures, accent lighting, and natural light integration for perfect ambiance at any time.</p>
+                        </div>
+                    </div>
+                </div>
 
-    <footer>
-      <p>&copy; 2025 Real Living Real Estate. All Rights Reserved.</p>
-      <p><em>Your Dreams, Our Expertise, Perfect Match!</em></p>
-    </footer>
-  </div>
+                <div class="content-area">
+                    <div class="area-icon">🧺</div>
+                    <h3 class="area-title">Modern Laundry</h3>
+                    <p class="area-description">Transform laundry day from chore to pleasure with this efficiently designed space. Every square inch has been optimized for functionality while maintaining the home's aesthetic standards throughout.</p>
+
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <span class="feature-icon">🔌</span>
+                            <h3>Premium Connections</h3>
+                            <p>Pre-wired for high-efficiency washer and dryer with 240V connections, proper ventilation, and water supply lines professionally installed.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">📏</span>
+                            <h3>Generous Counter Space</h3>
+                            <p>Durable quartz countertop provides ample space for folding, sorting, and organizing clothes with built-in measuring guides.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">🗄️</span>
+                            <h3>Smart Storage Solutions</h3>
+                            <p>Floor-to-ceiling cabinetry with pull-out drawers, hanging rods, and specialized compartments for all laundry supplies.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="feature-icon">🌊</span>
+                            <h3>Utility Sink</h3>
+                            <p>Deep stainless steel utility sink with pull-out faucet perfect for hand-washing delicates, cleaning supplies, or pet care.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="detailed-specs">
+            <div class="specs-header">
+                <h3>Technical Specifications</h3>
+                <p>Detailed information about dimensions, materials, and features</p>
+            </div>
+
+            <div class="specs-tabs">
+                <button class="tab-button active" onclick="showSpecTab('entry-specs')">Entry Specifications</button>
+                <button class="tab-button" onclick="showSpecTab('laundry-specs')">Laundry Specifications</button>
+                <button class="tab-button" onclick="showSpecTab('materials')">Materials & Finishes</button>
+            </div>
+
+            <div id="entry-specs" class="tab-content active">
+                <h4 style="text-align: center; margin-bottom: 30px; font-size: 1.8em; color: #2c3e50;">Entry Area Details</h4>
+                <div class="spec-grid">
+                    <div class="spec-item">
+                        <strong>Dimensions</strong>
+                        <span>8' × 12' (96 sq ft)</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Ceiling Height</strong>
+                        <span>10 feet with decorative molding</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Flooring</strong>
+                        <span>Premium luxury vinyl plank with acoustic underlayment</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Lighting</strong>
+                        <span>LED chandelier + recessed lighting (dimmable)</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Closet Space</strong>
+                        <span>6' wide × 2' deep coat closet with custom organizers</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Electrical</strong>
+                        <span>4 outlets, USB charging station, smart switch controls</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="laundry-specs" class="tab-content">
+                <h4 style="text-align: center; margin-bottom: 30px; font-size: 1.8em; color: #2c3e50;">Laundry Room Details</h4>
+                <div class="spec-grid">
+                    <div class="spec-item">
+                        <strong>Dimensions</strong>
+                        <span>6' × 8' (48 sq ft)</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Washer/Dryer</strong>
+                        <span>Side-by-side or stackable configuration ready</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Counter Space</strong>
+                        <span>4' × 2' quartz countertop with rounded edges</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Storage</strong>
+                        <span>Upper cabinets: 36" wide × 42" high × 12" deep</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Utility Sink</strong>
+                        <span>24" stainless steel drop-in sink with spray faucet</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Ventilation</strong>
+                        <span>Dedicated exhaust fan (150 CFM) with humidity sensor</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="materials" class="tab-content">
+                <h4 style="text-align: center; margin-bottom: 30px; font-size: 1.8em; color: #2c3e50;">Premium Materials & Finishes</h4>
+                <div class="spec-grid">
+                    <div class="spec-item">
+                        <strong>Cabinetry</strong>
+                        <span>Solid wood construction with soft-close hinges</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Hardware</strong>
+                        <span>Brushed nickel handles and hinges throughout</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Paint</strong>
+                        <span>Low-VOC premium paint in neutral designer colors</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Trim Work</strong>
+                        <span>Crown molding, baseboards, and door casings included</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Entry Door</strong>
+                        <span>Solid core door with decorative glass insert</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Insulation</strong>
+                        <span>R-15 insulation for sound dampening between rooms</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="lifestyle-section">
+            <div class="section-header">
+                <h2>Lifestyle Benefits</h2>
+                <p class="section-intro">These spaces aren't just functional - they enhance your daily routine and add value to your home experience.</p>
+            </div>
+
+            <div class="lifestyle-grid">
+                <div class="lifestyle-card">
+                    <h4>🎯 Daily Organization</h4>
+                    <p>Start and end each day with everything in its place. The entry area keeps your essentials organized and easily accessible, while the laundry room streamlines household management.</p>
+                </div>
+                <div class="lifestyle-card">
+                    <h4>👥 Guest Impression</h4>
+                    <p>Make a lasting first impression with an entry that speaks to your home's quality and your attention to detail. Guests will immediately feel welcomed and impressed.</p>
+                </div>
+                <div class="lifestyle-card">
+                                  <div class="lifestyle-card">
+                    <h4>⏱️ Efficient Routine</h4>
+                    <p>Smart layout design reduces chore time by 30% with ergonomic workflow and everything within arm's reach for maximum efficiency.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="interactive-gallery">
+            <div class="gallery-header">
+                <h3>Virtual Tour</h3>
+                <p>Explore these spaces through our interactive gallery</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <span>🚪</span>
+                    Entry Foyer
+                </div>
+                <div class="gallery-item">
+                    <span>🧺</span>
+                    Laundry Center
+                </div>
+                <div class="gallery-item">
+                    <span>🛋️</span>
+                    Entry Seating
+                </div>
+                <div class="gallery-item">
+                    <span>🚿</span>
+                    Utility Sink
+                </div>
+            </div>
+        </div>
+
+        <a href="page2.html" class="back-button">← Back to Floor Plan</a>
+
+        <footer>
+            <p>&copy; 2025 Real Living Real Estate. All Rights Reserved.</p>
+            <p><em>Your Dreams, Our Expertise, Perfect Match!</em></p>
+            <div class="social-links">
+                <a href="#">📘</a>
+                <a href="#">📸</a>
+                <a href="#">💼</a>
+                <a href="#">📱</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function showSpecTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
 </body>
 </html>
