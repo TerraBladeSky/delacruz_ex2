@@ -117,7 +117,69 @@
       font-style: italic;
       margin: 5px 0;
     }
-  </style>
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animated {
+    animation: fadeInUp 0.8s ease forwards;
+  }
+
+  .highlight {
+    color: #8e44ad;
+    font-weight: bold;
+  }
+
+  .testimonial {
+    background: #fdf9ff;
+    border-left: 6px solid #8e44ad;
+    padding: 20px;
+    margin: 30px auto;
+    max-width: 800px;
+    font-style: italic;
+    border-radius: 10px;
+  }
+
+  .cta {
+    background: linear-gradient(135deg, #8e44ad, #9b59b6);
+    color: white;
+    text-align: center;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 50px;
+  }
+
+  .cta a {
+    background-color: white;
+    color: #8e44ad;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    margin-top: 15px;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  .cta a:hover {
+    background-color: #f0e6fa;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+  }
+
+</style>
 </head>
 <body>
   <div class="container">
@@ -163,10 +225,43 @@
         </div>
       </div>
 
-      <a href="page2.html" class="back-button">← Back to Floor Plan</a>
-    </section>
+      
+    
+<h2>✨ Why Choose Our Library?</h2>
+<p class="animated">
+  Our private library isn’t just a room—it’s a sanctuary. Designed with a passion for knowledge, it offers a tranquil haven in your own home. Whether you're writing your next book, prepping for a big meeting, or diving into fantasy worlds, this space caters to it all.
+</p>
 
-    <footer>
+<div class="features">
+  <div class="feature-card animated">
+    <span class="feature-icon">🔇</span>
+    <h3>Sound Isolation</h3>
+    <p>Enjoy peace and quiet thanks to acoustic insulation that keeps distractions out.</p>
+  </div>
+  <div class="feature-card animated">
+    <span class="feature-icon">🌿</span>
+    <h3>Nature Views</h3>
+    <p>Large windows bring in natural light and scenic garden views for relaxation.</p>
+  </div>
+</div>
+
+<h2>💬 What Our Clients Say</h2>
+<div class="testimonial animated">
+  “This library completely changed the way I work from home. It’s serene, stylish, and so well thought out. Every detail contributes to focus and comfort.” — <span class="highlight">Andrea M., Homeowner</span>
+</div>
+
+<div class="cta animated" id="contact">
+  <h2>Ready to Customize Your Own Private Library?</h2>
+  <p>Reach out today to explore how we can tailor your home to include this inspiring space.</p>
+  <a href="contact.html">📨 Contact Us</a>
+</div>
+
+</section>
+
+<div style="text-align: center;">
+  <a href="page2.html" class="back-button">← Back to Floor Plan</a>
+</div>
+<footer>
       <p>&copy; 2025 Real Living Real Estate. All Rights Reserved.</p>
       <p><em>Your Dreams, Our Expertise, Perfect Match!</em></p>
     </footer>

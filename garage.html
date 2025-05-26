@@ -55,7 +55,7 @@
     }
     h1 {
       color: #2c3e50;
-      font-size: 2.2em;
+      font-size: 2.4em;
       margin-bottom: 30px;
     }
     h2 {
@@ -75,7 +75,7 @@
       max-width: 800px;
     }
     .feature-icon {
-      font-size: 2em;
+      font-size: 2.5em;
       display: block;
       margin-bottom: 10px;
     }
@@ -86,6 +86,10 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: scale(1.02);
     }
     .features {
       display: grid;
@@ -100,11 +104,34 @@
       text-decoration: none;
       border-radius: 25px;
       display: inline-block;
-      margin: 20px 0;
+      margin: 30px 0;
       font-weight: bold;
     }
     .back-button:hover {
       background: linear-gradient(135deg, #9b59b6, #8e44ad);
+    }
+    .garage-image {
+      margin: 30px auto;
+      display: block;
+      max-width: 90%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .divider {
+      height: 3px;
+      background: linear-gradient(to right, #8e44ad, #9b59b6);
+      margin: 40px auto;
+      width: 120px;
+      border-radius: 2px;
+    }
+    .highlight-box {
+      background-color: #f3ecf9;
+      border-left: 5px solid #8e44ad;
+      padding: 20px;
+      margin: 30px auto;
+      max-width: 800px;
+      font-style: italic;
+      color: #4a235a;
     }
     footer {
       background: linear-gradient(135deg, #2c3e50, #34495e);
@@ -139,28 +166,40 @@
       <h1>Spacious Garage</h1>
       <p>The garage provides not only secure vehicle storage but also a multifunctional space for your tools, hobbies, and extra belongings. Built with durability and accessibility in mind, this garage offers both practicality and room to grow.</p>
 
+      <img src="garage.jpg" alt="Modern Two-Car Garage" class="garage-image" />
+      <div class="divider"></div>
+
+      <p>In today's homes, a garage serves more than just parking space. It functions as an extension of your lifestyle—a place where creativity, functionality, and security come together. Whether you're storing vehicles, building projects, or organizing seasonal items, the right garage setup makes all the difference.</p>
+
       <h2>🚗 Garage Features</h2>
       <div class="features">
         <div class="feature-card">
           <span class="feature-icon">🚘</span>
           <h3>2-Car Capacity</h3>
-          <p>Spacious enough to accommodate two full-size vehicles with room to spare.</p>
+          <p>Spacious enough to accommodate two full-size vehicles with room to spare. This layout ensures ease of movement, prevents overcrowding, and makes your daily commute more convenient—especially for multi-driver households.</p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">🧰</span>
           <h3>Tool & Storage Area</h3>
-          <p>Wall-mounted shelves and pegboards offer efficient organization for tools and supplies.</p>
+          <p>Wall-mounted shelves and pegboards offer efficient organization for tools and supplies. With dedicated zones for power tools, hardware, and gardening equipment, your garage transforms into a workshop as well as a storage center.</p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">🔌</span>
           <h3>Power Access</h3>
-          <p>Equipped with multiple electrical outlets, ideal for power tools, EV charging, or DIY projects.</p>
+          <p>Equipped with multiple electrical outlets, ideal for power tools, EV charging, or DIY projects. Built-in circuits support heavy usage without the need for extension cords, creating a safer and more versatile space.</p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">🚪</span>
           <h3>Secure Entry</h3>
-          <p>Durable, insulated doors with remote access provide convenience and safety for your belongings.</p>
+          <p>Durable, insulated doors with remote access provide convenience and safety for your belongings. Motion sensors and smart locks add another layer of protection, giving you peace of mind when storing valuables or equipment.</p>
         </div>
+      </div>
+
+      <h2>🔍 Why a Great Garage Matters</h2>
+      <p>A garage isn't just a parking area—it's a functional part of your home. It offers shelter from the elements, increases home resale value, and provides a clean, accessible area for a wide range of activities. With proper planning, your garage can become a hobby zone, storage area, or even a personal gym.</p>
+
+      <div class="highlight-box">
+        <p><strong>Imagine a space that adapts to your needs, grows with your family, and supports your day-to-day tasks seamlessly. That’s what this garage offers—and more.</strong></p>
       </div>
 
       <a href="page2.html" class="back-button">← Back to Floor Plan</a>
