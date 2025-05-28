@@ -27,6 +27,14 @@
       padding: 20px;
       text-align: center;
     }
+    header p {
+      color: white;
+      text-align: center;
+      margin: 0;
+      font-size: 1.2em;
+      width: 100%;
+      display: block;
+    }
     nav ul {
       list-style: none;
       margin: 0;
@@ -113,9 +121,22 @@
       padding: 25px;
       margin-top: 40px;
     }
-    footer p {
-      font-style: italic;
+    /* UPDATED FOOTER STYLES */
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .footer-content p {
+      color: white;
+      text-align: center;
+      text-indent: 0;
       margin: 5px 0;
+      font-style: normal;
+    }
+    .footer-content p.emphasized {
+      font-style: italic;
     }
   
   @keyframes fadeInUp {
@@ -178,7 +199,6 @@
     transition: all 0.3s ease;
     box-shadow: 0 6px 14px rgba(0,0,0,0.15);
   }
-
 </style>
 </head>
 <body>
@@ -225,45 +245,47 @@
         </div>
       </div>
 
-      
-    
-<h2>✨ Why Choose Our Library?</h2>
-<p class="animated">
-  Our private library isn’t just a room—it’s a sanctuary. Designed with a passion for knowledge, it offers a tranquil haven in your own home. Whether you're writing your next book, prepping for a big meeting, or diving into fantasy worlds, this space caters to it all.
-</p>
+      <h2>✨ Why Choose Our Library?</h2>
+      <p class="animated">
+        Our private library isn’t just a room—it’s a sanctuary. Designed with a passion for knowledge, it offers a tranquil haven in your own home. Whether you're writing your next book, prepping for a big meeting, or diving into fantasy worlds, this space caters to it all.
+      </p>
 
-<div class="features">
-  <div class="feature-card animated">
-    <span class="feature-icon">🔇</span>
-    <h3>Sound Isolation</h3>
-    <p>Enjoy peace and quiet thanks to acoustic insulation that keeps distractions out.</p>
-  </div>
-  <div class="feature-card animated">
-    <span class="feature-icon">🌿</span>
-    <h3>Nature Views</h3>
-    <p>Large windows bring in natural light and scenic garden views for relaxation.</p>
-  </div>
-</div>
+      <div class="features">
+        <div class="feature-card animated">
+          <span class="feature-icon">🔇</span>
+          <h3>Sound Isolation</h3>
+          <p>Enjoy peace and quiet thanks to acoustic insulation that keeps distractions out.</p>
+        </div>
+        <div class="feature-card animated">
+          <span class="feature-icon">🌿</span>
+          <h3>Nature Views</h3>
+          <p>Large windows bring in natural light and scenic garden views for relaxation.</p>
+        </div>
+      </div>
 
-<h2>💬 What Our Clients Say</h2>
-<div class="testimonial animated">
-  “This library completely changed the way I work from home. It’s serene, stylish, and so well thought out. Every detail contributes to focus and comfort.” — <span class="highlight">Andrea M., Homeowner</span>
-</div>
+      <h2>💬 What Our Clients Say</h2>
+      <div class="testimonial animated">
+        “This library completely changed the way I work from home. It’s serene, stylish, and so well thought out. Every detail contributes to focus and comfort.” — <span class="highlight">Andrea M., Homeowner</span>
+      </div>
 
-<div class="cta animated" id="contact">
-  <h2>Ready to Customize Your Own Private Library?</h2>
-  <p>Reach out today to explore how we can tailor your home to include this inspiring space.</p>
-  <a href="contact.html">📨 Contact Us</a>
-</div>
+      <div class="cta animated" id="contact">
+        <h2>Ready to Customize Your Own Private Library?</h2>
+        <p>Reach out today to explore how we can tailor your home to include this inspiring space.</p>
+        <a href="contact.html">📨 Contact Us</a>
+      </div>
 
-</section>
+    </section>
 
-<div style="text-align: center;">
-  <a href="page2.html" class="back-button">← Back to Floor Plan</a>
-</div>
-<footer>
-      <p>&copy; 2025 Real Living Real Estate. All Rights Reserved.</p>
-      <p><em>Your Dreams, Our Expertise, Perfect Match!</em></p>
+    <div style="text-align: center;">
+      <a href="page2.html" class="back-button">← Back to Floor Plan</a>
+    </div>
+
+    <footer>
+      <!-- UPDATED FOOTER CONTENT -->
+      <div class="footer-content">
+        <p>&copy; 2025 Real Living Real Estate. All Rights Reserved.</p>
+        <p class="emphasized">Your Dreams, Our Expertise, Perfect Match!</p>
+      </div>
     </footer>
   </div>
 </body>
